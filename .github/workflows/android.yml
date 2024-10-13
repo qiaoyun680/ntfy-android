@@ -25,7 +25,7 @@ jobs:
       env:
         GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
       run: |
-        sed -i 's|<string name="app_base_url" translatable="false">https://ntfy.sh</string>|<string name="app_base_url" translatable="false">"${{ secrets.APP_BASE_URL }}"</string>|' app/src/main/res/values/values.xml
+        sed -i 's|<string name="app_base_url" translatable="false">https://ntfy.sh</string>|<string name="app_base_url" translatable="false">${{ secrets.APP_BASE_URL }}</string>|' app/src/main/res/values/values.xml
         cat app/src/main/res/values/values.xml
         echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" > app/google-services.json
     - name: Grant execute permission for gradlew
