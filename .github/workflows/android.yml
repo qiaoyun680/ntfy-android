@@ -31,8 +31,9 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew assemblePlayRelease
-    - name: Releasing using Hub
-      uses: sangatdesai/release-apk@main
-      env:
-       GITHUB_TOKEN: ${{ secrets.TOKEN }}
-       APP_FOLDER: app/build/outputs/apk/play/release
+    - name: Upload to Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+         name: ntfy
+         path: app/build/outputs/apk/play/release/*.apk
+         if-no-files-found: error
