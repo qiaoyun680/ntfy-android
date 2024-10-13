@@ -6,7 +6,8 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
+env:
+  APP_FOLDER: app/build/outputs/apk/play/release
 jobs:
   build:
 
